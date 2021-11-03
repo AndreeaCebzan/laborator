@@ -1,20 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Storage.Table;
 
-namespace StudentsAPI.Models
+namespace Models
 {
-    public class Student
+    public class StudentEntity : TableEntity
     {
-        public int Id { get; set; }
-        public string Nume { get; set; }
+        public StudentEntity(string university, string cnp)
+        {
+            this.PartitionKey=university;
+            this.RowKey=cnp;
 
-        public string Prenume { get; set; }
-        public string Facultate { get; set; }
-        public string Sectie { get; set; }
+        }
+        public StudentEntity()
+        {
 
-        public int An_studiu { get; set; }
-        public int Grupa { get; set; }
+        }
+        public string FirstName{get; set;}
+        public string LastName{get; set;}
+        public string Email{get; set;}
+        public string PhoneNumber{get;set;}
+        public int Year{get;set;}
+        public string Faculty{get;set;}
+
     }
 }
